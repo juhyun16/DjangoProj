@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}친구목록{% endblock %}
+
+{% block extra_body %}
+    {% if List %}
+        <div style = "padding: 100px 100px 10px;">
+            <form action="#" method="post" class = "bs-example bs-example-form" role = "form">
+                {% csrf_token %}
+                <div class = "row">
+                    {% for frn in List %}
+                        <div class = "col-lg-6">
+                            <div class = "input-group">
+
+                                <span class = "input-group-addon">
+                                    <input type = "checkbox" id="{{ forloop.counter }}" name="chk_info[]" value="{{ frn.username }}"/>
+                                    <label for="{{ forloop.counter }}">{{ frn.username }}</label>
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                    {% endfor %}
+
+                    <input type="submit" value="채팅방만들기."/>
+                </div>
+            </form>
+
+        </div>
+    {% elif List|length == 0 %}
+        <p>현재 내 친구가 없습니다. 친구를 추가해주세요.</p>
+    {% endif %}
+{% endblock %}

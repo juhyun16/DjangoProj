@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}친구검색{% endblock %}
+{% block extra_body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>유저 검색 기능을 제공합니다.</h3>
+                {% if error_msg %}<h3>{{ error_msg }}</h3>{% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    <div style = "padding: 100px 100px 10px;">
+        <form action="" method="post" class = "bs-example bs-example-form" role = "form">
+            {% csrf_token %}
+            <div class = "row">
+                <div class = "col-lg-6">
+                    <div class = "input-group">
+                        <input type = "text" name="ID" value="{{ comment }}" class = "form-control"/>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <input type="submit" value="찾기"/>
+       </form>
+    </div>
+
+
+    {% if obj %}
+        <p>
+            <form action="{% url 'friend:add' %}" method="post">
+                {% csrf_token %}
+                <input type="radio" id="USER" name="choice" value="{{ obj.id }}"/>
+                <label for="USER">{{ obj.username }}, {{ obj.profile.address }}</label>
+
+                <br/>
+                <input type="submit" value="추가하겠습니다."/>
+            </form>
+        </p>
+    {% endif %}
+
+{% endblock extra_body %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}로그인{% endblock %}
+
+{% block extra_body %}
+    <div class="container">
+        <p><h1>로그인 양식입니다.</h1></p>
+        <form action="" method="post" class="post-form">
+            {% csrf_token %}
+            <table class="table">
+                {{ form.as_table }}
+            </table>
+
+            <button type="submit" class="save btn btn-default">확인</button>
+        </form>
+    </div>
+{% endblock extra_body %}
