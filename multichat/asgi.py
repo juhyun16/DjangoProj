@@ -7,5 +7,5 @@ ASGI applications at "multichat.asgi:channel_layer" as their channel layer.
 
 import os
 from channels.asgi import get_channel_layer
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.prod")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "multichat.settings.prod")
 channel_layer = get_channel_layer()
