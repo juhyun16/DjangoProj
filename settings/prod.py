@@ -16,13 +16,13 @@ redis_url = urllib.parse.urlparse(os.environ.get('REDIS_URL'))
 # 셋팅방법은 아래 url 참고.
 # https://devcenter.heroku.com/articles/heroku-redis#connecting-in-django
 
-CACHES = {
+CHANNEL_LAYERS = {
     "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-         "OPTIONS": {
-             "PASSWORD": redis_url.password,
-         }
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "ROUTING": "multichat.routing.channel_routing",
+        "CONFIG": {
+            "hosts": [(redis_url.hostname, redis_url.port)],
+        },
     },
 }
 
