@@ -21,7 +21,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "ROUTING": "multichat.routing.channel_routing",
         "CONFIG": {
-            "hosts": [(redis_url.hostname, redis_url.port)],
+            "hosts": [os.environ.get('REDIS_URL')],
         },
     },
 }
