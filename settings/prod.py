@@ -21,7 +21,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "ROUTING": "multichat.routing.channel_routing",
         "CONFIG": {
-            "hosts": [redis_url],
+            "hosts": ['redis://h:p8caa905e339be0892c72bf56803dbc91874909d7ba639f86db4205d720ac1e8b@ec2-34-233-163-137.compute-1.amazonaws.com', 24499],
         },
     },
 }
