@@ -1,4 +1,4 @@
-from .common import *
+from .settings import *
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -15,6 +15,7 @@ redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 # Channel layer definitions
 # http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
+
 CHANNEL_LAYERS = {
     "default": {
         # This example app uses the Redis channel layer implementation asgi_redis

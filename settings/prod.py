@@ -1,4 +1,4 @@
-from .common import *
+from .settings import *
 import dj_database_url
 import urllib.parse
 
@@ -18,12 +18,12 @@ redis_url = urllib.parse.urlparse(os.environ.get('REDIS_URL'))
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "redis_cache.RedisCache",
-        "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-        "CONFIG": {
-            "hosts": [(redis_url.hostname, redis_url.port)],
-        },
-        "ROUTING": "multichat.routing.channel_routing",
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+         "OPTIONS": {
+             "PASSWORD": redis_url.password,
+             "DB": 0,
+         }
     },
 }
 
