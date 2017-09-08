@@ -10,7 +10,7 @@ DATABASES = {
 }
 
 
-redis_url = urllib.parse.urlparse(os.environ.get('REDIS_URL'))
+redis_url = os.environ.get('REDIS_URL')
 
 # Channel layer는 heroku사의 heroku redis를 사용할 것임.
 # 셋팅방법은 아래 url 참고.
@@ -21,7 +21,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "ROUTING": "multichat.routing.channel_routing",
         "CONFIG": {
-            "hosts": ['redis://h:p8caa905e339be0892c72bf56803dbc91874909d7ba639f86db4205d720ac1e8b@ec2-34-233-163-137.compute-1.amazonaws.com', 24499],
+            "hosts": [os.environ.get('REDIS_URL')],
         },
     },
 }
