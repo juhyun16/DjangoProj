@@ -24,7 +24,7 @@ SECRET_KEY=os.environ.get("SECRET_KEY", "vsecretvv")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # prod.py에서 오버라이딩 해준다.
-DEBUG = True
+DEBUG = False
 
 # forwarding 허락할 호스트를 적어준다.
 ALLOWED_HOSTS = ['*']
