@@ -12,15 +12,6 @@ def showroomList(request):
 
 
 
-
-
-
-
-
-
-
-
-
 @login_required
 def index(request):
     """
