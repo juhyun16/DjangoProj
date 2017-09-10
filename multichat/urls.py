@@ -7,7 +7,7 @@ from chat.views import index
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    #url(r'^$', HomeView.as_view(), name="home"),
+    url(r'^chattting/$', HomeView.as_view(), name="home"),
 
     #       회원가입 앱
     url(r'^accounts/', include('accounts.urls')),
