@@ -1,2 +1,1 @@
-web: daphne multichat.asgi:channel_layer
-worker: python manage.py runworker
+web: python manage.py runserver 0.0.0.0:8000
