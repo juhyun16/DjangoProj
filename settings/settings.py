@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +24,7 @@ SECRET_KEY=os.environ.get("SECRET_KEY", "vsecretvv")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # prod.py에서 오버라이딩 해준다.
-DEBUG = False
+DEBUG = True
 
 # forwarding 허락할 호스트를 적어준다.
 ALLOWED_HOSTS = ['*']
@@ -55,7 +54,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -124,11 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
 
 
 #   미디어 관련 사항 지정(파일 업로드 할 때 쓴다. ex. 이미지 파일)
@@ -150,26 +143,3 @@ LOGIN_URL="/accounts/login/"
 LOGIN_REDIRECT_URL="/accounts/profile/"
 LOGOUT_REDIRECT_URL=None
 AUTH_USER_MODEL="auth.User"
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'),
-                                      conn_max_age=500)
-}
-
-
-# Channel layer definitions
-# http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "ROUTING": "multichat.routing.channel_routing",
-        "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL')],
-        },
-    },
-}

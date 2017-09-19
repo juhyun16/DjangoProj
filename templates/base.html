@@ -7,7 +7,15 @@
     <title>{% block title %}{% endblock %}</title>
 
     {% load staticfiles %}
-    <!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% block extrastyle %}{% endblock extrastyle %}" type="text/css" media="screen" />
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'channels/js/websocketbridge.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="{% block extraJS %}{% endblock extraJS %}"></script>
+
+
+
+    <!-- bootstrap v3.3.7 -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 
@@ -18,16 +26,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- end bootstrap -->
 
+    <!-- Auto format phone number dash bar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-	<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% block extrastyle %}{% endblock extrastyle %}" type="text/css" media="screen" />
-	<script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
-	<script src="{% static 'channels/js/websocketbridge.js' %}" type="text/javascript"></script>
+
 
     {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -67,17 +75,14 @@
         </div>
     </nav>
 
+
+    <!-- for chatting. -->
     <div class="container">
-        <div class="mt-3">
-
-        </div>
-
+        <div class="mt-3"></div>
         <section>
             {% block content %}
 		    {% endblock content %}
         </section>
-
-
     </div>
 
 
@@ -97,11 +102,20 @@
 
     <br/>
 
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted">&copy; 2017. 여름. 박주현</span>
+
+    <div class="navbar navbar-fixed-bottom">
+        <div class="row">
+            <hr>
+            <div class="col-lg-12">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                    <p class="text-muted">© 박주현. 2017. 여름.</p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
 
 </body>
 </html>

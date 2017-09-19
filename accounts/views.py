@@ -15,9 +15,9 @@ def profile(request):
 
 def signup(request):
     if request.method == "POST":
-        form=SignupForm(request.POST)
+        form=SignupForm(request.POST, request.FILES)
         if(form.is_valid()):
-            user=form.save()
+            form.save()
             return redirect(settings.LOGIN_URL)
     else:
         form=SignupForm()
