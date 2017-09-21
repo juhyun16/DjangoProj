@@ -1,13 +1,14 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from .views import HomeView
-from chat.views import index
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^chattting/$', HomeView.as_view(), name="home"),
+    url(r'^$', HomeView.as_view(), name="home"),
 
     #       회원가입 앱
     url(r'^accounts/', include('accounts.urls')),
@@ -15,10 +16,8 @@ urlpatterns = [
     #       친구추가 앱
     url(r'^friend/', include('friend.urls', namespace='friend')),
 
-    #       채팅 테스트 url  ->  추후 삭제
-    url(r'^$', index),
-
     #       본격 채팅 앱
     url(r'^chat/', include('chat.urls', namespace='chat')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

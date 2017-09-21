@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'accounts.apps.AccountsConfig',
     'friend.apps.FriendConfig',
+    'imagekit',
+    'bootstrap3',
 
 ]
 
@@ -140,6 +142,6 @@ MESSAGE_TAGS={constants.ERROR : "danger"}
 '''
 
 LOGIN_URL="/accounts/login/"
-LOGIN_REDIRECT_URL="/accounts/profile/"
+LOGIN_REDIRECT_URL="/"
 LOGOUT_REDIRECT_URL=None
 AUTH_USER_MODEL="auth.User"

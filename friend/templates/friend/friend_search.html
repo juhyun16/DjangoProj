@@ -1,44 +1,47 @@
 {% extends "base.html" %}
 {% block title %}친구검색{% endblock %}
+
+{% load bootstrap3 %}
+
 {% block extra_body %}
+    {% bootstrap_javascript jquery=1 %}
+    {% bootstrap_messages %}
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <h3>유저 검색 기능을 제공합니다.</h3>
-                {% if error_msg %}<h3>{{ error_msg }}</h3>{% endif %}
+                <hr/>
+                {% if error_msg %}
+                    <div class="alert alert-warning">
+                        <strong>Oops!</strong> {{ error_msg }}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 
-
-    <div style = "padding: 100px 100px 10px;">
-        <form action="" method="post" class = "bs-example bs-example-form" role = "form">
+    <div class="container">
+        <form action="" method="post" class="form">
             {% csrf_token %}
-            <div class = "row">
-                <div class = "col-lg-6">
-                    <div class = "input-group">
-                        <input type = "text" name="ID" value="{{ comment }}" class = "form-control"/>
-                    </div>
-                </div>
-                <br/>
-            </div>
-
-            <input type="submit" value="찾기"/>
-       </form>
+            {% bootstrap_form form %}
+            <input type="submit" value="검색" class="btn btn-primary btn-lg"/>
+        </form>
     </div>
 
+    <div class="col-xs-12" style="height : 70px;"></div>
 
-    {% if obj %}
-        <p>
+    {% if friend %}
+        <div class="container">
             <form action="{% url 'friend:add' %}" method="post">
                 {% csrf_token %}
-                <input type="radio" id="USER" name="choice" value="{{ obj.id }}"/>
-                <label for="USER">{{ obj.username }}, {{ obj.profile.address }}</label>
 
+                <input type="checkbox" id="USER" name="choice" value="{{ friend.nickname }}"/>
+                <label for="USER">Friend : {{ friend.nickname }}, {{ friend.phone_number }}</label>
                 <br/>
-                <input type="submit" value="추가하겠습니다."/>
-            </form>
-        </p>
-    {% endif %}
 
+                <input type="submit" value="추가하겠습니다." class="btn btn-primary"/>
+            </form>
+        </div>
+    {% endif %}
 {% endblock extra_body %}

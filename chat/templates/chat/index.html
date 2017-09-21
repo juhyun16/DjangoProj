@@ -12,14 +12,16 @@
         {% for room in rooms %}
             <li class="room-link" data-room-id="{{ room.id }}">{{ room }}</li>
         {% empty %}
-            <p class="empty">No chat rooms defined. Maybe make some in the <a href="{% url 'admin:index' %}">admin</a>?</p>
+            <div class="container"><h1><strong> 현재 내가 참여중인 채팅방이 없습니다.</strong></h1>
+                <h3> 먼저 친구를 추가하고 채팅을 즐기세요~! </h3>
+            </div>
         {% endfor %}
     </ul>
 
     <div id="chats">
     </div>
 
-{% endblock %}
+{% endblock content %}
 
 
 {% block extra_body %}
@@ -165,4 +167,4 @@
             }
         });
     </script>
-{% endblock %}
+{% endblock extra_body %}

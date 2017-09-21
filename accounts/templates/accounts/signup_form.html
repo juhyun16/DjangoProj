@@ -7,9 +7,9 @@
 {% block extra_body %}
 
     <div class="container">
-        <p><h1>회원가입 양식입니다.</h1></p>
+        <div class="page-header"><h1>회원가입 양식입니다.</h1></div>
         <hr/>
-        <form action="" method="post" class="post-form">
+        <form action="" method="post" class="post-form" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
                 <p>

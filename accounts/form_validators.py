@@ -2,7 +2,7 @@ import re
 from django.forms import ValidationError
 
 EMAIL_REGEX=re.compile(r'[^@]+@[^@]+\.[^@]+$')
-PHONE_REGEX=re.compile(r'(\d{3})[-](\d{4})[-](\d{4})$')
+PHONE_REGEX=re.compile(r'(\d+)[-](\d+)[-](\d+)$')
 
 
 def email_validator(email):
