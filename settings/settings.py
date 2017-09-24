@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'friend.apps.FriendConfig',
     'imagekit',
     'bootstrap3',
+    'blog.apps.BlogConfig',
 
 ]
 

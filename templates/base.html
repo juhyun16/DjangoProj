@@ -1,110 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta lang="en"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no" />
-    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="My first web project">
+    <meta name="author" content="juhyun-park">
+    <title>{% block title %}Carousel Template for Bootstrap{% endblock title %}</title>
 
     {% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% block extrastyle %}{% endblock extrastyle %}" type="text/css" media="screen" />
+    <link rel="icon" href="{% static 'icon/favicon.ico' %}" />
 
-    <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
-	<script src="{% static 'channels/js/websocketbridge.js' %}" type="text/javascript"></script>
-    <script type="text/javascript" src="{% block extraJS %}{% endblock extraJS %}"></script>
-
-
-    <!-- bootstrap v3.3.7 -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.css' %}" rel="stylesheet" />
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}" />
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- end bootstrap -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'ie10-viewport-bug-workaround.css' %}" rel="stylesheet" />
 
-    <!-- Auto format phone number dash bar -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    <!-- Animated radios & checkboxes -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% block extrastyle %}{% endblock extrastyle %}" type="text/css" />
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="{% block extraJS %}{% endblock extraJS %}"></script>
 
     {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body>
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-            </div>
-
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">글쓰기</a></li>
-                    <li><a href="{% url 'friend:search' %}">친구검색 및 추가</a></li>
-                    <li><a href="{% url 'friend:list' %}">친구목록 및 채팅방만들기</a></li>
-                    <li><a href="{% url 'chat:enter' %}">채팅하기</a></li>
-
-                    <!--    아래의 템플릿 변수 Seoul은 blog.context_processor.py에
-                    정의되어 있는 dict 자료구조의 key이다.   -->
-                    <!--    view에서 render함수 호출할 때 context 객체를 인자로 넘겨주지 않아도
-                    context_processor 덕분에 템플릿 변수를 사용할 수 있다. -->
-                    <!--    <li><a href="#">Contact {# {{ Seoul }} #}</a></li>    -->
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    {% if not user.is_authenticated %}
-                        <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    {% else %}
-                        <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-cog"></span> My Profile</a> </li>
-                        <li><a href="{% url 'logout' %}?next={{ request.path }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a> </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <!-- for chatting. -->
     <div class="container">
-        <div class="mt-3"></div>
-        <section>
-            {% block content %}
-		    {% endblock content %}
-        </section>
-    </div>
-
-
-	{% block extra_body %}{% endblock extra_body %}
-
-
-
-    <div class="navbar navbar-fixed-bottom">
         <div class="row">
-            <hr>
-            <div class="col-lg-12">
-                <div class="col-md-6">
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
 
+                        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                    </div>
+
+
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{% url 'blog:index' %}">전체 글 목록</a></li>
+                            <li><a href="{% url 'friend:search' %}">친구검색 및 추가</a></li>
+                            <li><a href="{% url 'friend:list' %}">친구목록 및 채팅방만들기</a></li>
+                            <li><a href="{% url 'chat:enter' %}">채팅하기</a></li>
+
+                            <!--    아래의 템플릿 변수 Seoul은 blog.context_processor.py에
+                            정의되어 있는 dict 자료구조의 key이다.   -->
+                            <!--    view에서 render함수 호출할 때 context 객체를 인자로 넘겨주지 않아도
+                            context_processor 덕분에 템플릿 변수를 사용할 수 있다. -->
+                            <!--    <li><a href="#">Contact {# {{ Seoul }} #}</a></li>    -->
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if not user.is_authenticated %}
+                                <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                                <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            {% else %}
+                                <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-cog"></span> My Profile</a> </li>
+                                <li><a href="{% url 'logout' %}?next={{ request.path }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a> </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <p class="text-muted">© 박주현. 2017. 여름.</p>
-                </div>
-            </div>
+            </nav>
+            <!-- Navigation end -->
+
+
+            {% block chatting %}{% endblock chatting %}
+            {% block extra_body %}{% endblock extra_body %}
+
+
+            <!-- Bootstrap core JavaScript -->
+            <!-- Placed at the end of the document so the pages load faster -->
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="static/js/jquery-3.2.1.min.js"><\/script>')</script>
+            <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}"></script>
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
+
+
+            <footer>
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 박주현 2017. 여름. </p>
+            </footer>
         </div>
     </div>
-
 </body>
 </html>

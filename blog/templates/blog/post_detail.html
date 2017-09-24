@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
+{% block extra_body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>{{ object.title }}</h2>
+
+                {{ object.content|linebreaks }}
+
+                <hr/>
+
+
+                <a href="{% url 'blog:index' %}" class="btn btn-primary">전체 글 목록</a>
+                <a href="{% url 'blog:change' %}" class="btn btn-primary">내 글 목록</a>
+                <a href="{% url 'blog:update' object.pk %}" class="btn btn-primary">수정하기</a>
+                <a href="{% url 'blog:delete' object.pk %}" class="btn btn-primary">삭제하기</a>
+            </div>
+        </div>
+    </div>
+{% endblock extra_body %}
+

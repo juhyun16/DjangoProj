@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    글 삭제
+{% endblock %}
+
+{% block extra_body %}
+    <div class="container">
+        <h2>글 제목 : {{ object }}</h2>
+        <h4>해당 글을 정말 삭제 하시겠습니까?</h4>
+
+        <hr/>
+
+        <form action="" method="post">
+            {% csrf_token %}
+                <a href="{{ object.get_absolute_url }}" class="btn btn-info" role="button">아니요. 취소!</a>
+                <input type="submit" value="예, 삭제하겠습니다." class="btn btn-danger"/>
+        </form>
+    </div>
+{% endblock %}
+
+
+
+

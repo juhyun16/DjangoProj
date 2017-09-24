@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block extra_body %}
+    <div id="board" class="container">
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>작성시각</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in object_list %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> </td>
+                        <td>{{ post.author }}</td>
+                        <td>{{ post.modify_date | date:"Y-m-d D" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="{% url 'blog:add' %}" class="btn btn-primary pull-right">글쓰기</a>
+                <a href="{% url 'blog:change' %}" class="btn btn-primary pull-right">내 글 목록</a>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="text-center pagination-wrap">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a> </li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }}<span class="sr-only">(current)</span> </span></li>
+                {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a> </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a> </li>
+            {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock extra_body %}
+

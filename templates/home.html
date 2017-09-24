@@ -1,7 +1,152 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %}
-Home
+    Chat app powered by python 3.
 {% endblock %}
 
 
+{% block extra_body %}
+    <!-- Carousel -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="/media/nanumi/nanumi1.png" alt="First slide" />
+                <div class="container">
+                    <div class="carousel-caption">
+                        <!-- caption 사용 방법
+                        <h1>Example headline.</h1>
+                        <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img class="second-slide" src="/media/nanumi/nanumi2.jpg" alt="Second slide" />
+                <div class="container">
+                    <div class="carousel-caption">
+                        <!-- caption 사용 방법
+                        <h1>Another example headline.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img class="third-slide" src="/media/nanumi/nanumi3-3.jpg" alt="Third slide" />
+                <div class="container">
+                    <div class="carousel-caption">
+                        <!-- caption 사용 방법
+                        <h1>One more for good measure.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- end Carousel -->
+
+
+    <!-- Marketing messaging and featurettes -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-3">
+                <img class="img-circle" src="/media/default-picture.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-3 -->
+
+            <div class="col-lg-3">
+                <img class="img-circle" src="/media/default-picture.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Heading</h2>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-3 -->
+
+            <div class="col-lg-3">
+                <img class="img-circle" src="/media/default-picture.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-3 -->
+
+            <div class="col-lg-3">
+                <img class="img-circle" src="/media/default-picture.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-3 -->
+        </div><!-- /.row -->
+
+        <!-- START THE FEATURETTES -->
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">간단한 사이트 소개. <span class="text-muted">Let me introduce my site.</span></h2>
+                <p class="lead">채팅서비스에 기반한 헌혈자 돕기 커뮤니티. 내용좀 더 보강할 예정입니다.</p>
+            </div>
+
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block" src="http://via.placeholder.com/500x500" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7 col-md-push-5">
+                <h2 class="featurette-heading">이 사이트는 아직 모든 브라우저를 완벽하게 지원하지 못합니다.. <span class="text-muted">Our website have not been compatible with all browers yet.</span></h2>
+                <p class="lead">안드로이드에 기본으로 내장되어 있는 '인터넷' 앱에서는 채팅기능이 지원되지 않는다. 기타 내용 좀 더 보강할 예정입니다.</p>
+            </div>
+
+            <div class="col-md-5 col-md-pull-7">
+                <img class="featurette-image img-responsive center-block" src="http://via.placeholder.com/500x500" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">And 앞으로 추가할 기능들... <span class="text-muted">The following features will be applied soon.</span></h2>
+                <p class="lead">일단 버그 수정이 시급하다. 모바일에서 채팅 입력시 footer가 내 채팅 메시지를 가리는 버그 해결해야한다.</p>
+                <p class="lead">게시판 글(post)에 댓글달기 - 어렵지 않다.</p>
+                <p class="lead">게시판 글(post)에 검색기능 추가하기 - 역시 어렵지 않다.</p>
+                <p class="lead">footer를 하단에 고정시키는 방법을 알아보아야 겠다.</p>
+            </div>
+
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block" src="http://via.placeholder.com/500x500" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+        <!-- /END THE FEATURETTES -->
+
+    </div>
+    <!-- /.container -->
+{% endblock extra_body %}

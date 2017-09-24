@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}회원가입{% endblock %}
-{% load staticfiles %}
-{% block extraJS %}{% static 'signup/signup.js' %}{% endblock extraJS %}
+
 
 {% block extra_body %}
 
@@ -28,3 +27,6 @@
 
 {% endblock extra_body %}
 
+
+{% load staticfiles %}
+{% block extraJS %}{% static 'signup/signup.js' %}{% endblock extraJS %}

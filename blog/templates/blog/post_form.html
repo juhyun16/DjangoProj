@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    새 글 작성
+{% endblock %}
+
+{% block extra_body %}
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	<form method="POST" class="login-form col-md-12" action=".">
+		{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="저장" class="btn btn-success"/>
+        <br/>
+        <a href="{% url 'blog:index' %}">
+            <button type="button" class="btn btn-danger">취소</button>
+        </a>
+	</form>
+</div>
+{% endblock %}
+

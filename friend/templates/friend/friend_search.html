@@ -45,3 +45,7 @@
         </div>
     {% endif %}
 {% endblock extra_body %}
+
+
+{% load staticfiles %}
+{% block extraJS %}{% static 'friend/search.js' %}{% endblock extraJS %}
