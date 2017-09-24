@@ -22,6 +22,5 @@ urlpatterns = [
 
     #       게시판 글 쓰기 앱
     url(r'^blog/', include('blog.urls', namespace='blog')),
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
