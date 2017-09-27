@@ -7,8 +7,10 @@
                 <tr>
                     <th>id</th>
                     <th>Title</th>
-                    <th>Author</th>
+                    <th>작성자 nickname</th>
                     <th>작성시각</th>
+                    <th>게시글 타입</th>
+                    <th>혈액형</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +18,10 @@
                     <tr>
                         <td>{{ post.id }}</td>
                         <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> </td>
-                        <td>{{ post.author }}</td>
+                        <td>{{ post.author.profile.nickname }}</td>
                         <td>{{ post.modify_date | date:"Y-m-d D" }}</td>
+                        <td>{{ post.get_post_type_display }}</td>
+                        <td>{{ post.get_blood_type_display }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

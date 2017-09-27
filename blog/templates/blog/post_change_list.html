@@ -2,12 +2,13 @@
 
 {% block extra_body %}
     <div id="board" class="container">
+        <div class="row">
         <table class="table table-responsive table-hover">
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>작성시각</th>
                     <th>수정시각</th>
+                    <th>게시글 타입</th>
                     <th>수정</th>
                     <th>삭제</th>
                 </tr>
@@ -17,13 +18,14 @@
                     <tr>
                         <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> </td>
                         <td>{{ post.create_date | date:"Y-m-d D" }}</td>
-                        <td>{{ post.modify_date | date:"Y-m-d D" }}</td>
+                        <td>{{ post.get_post_type_display }}</td>
                         <td><a href="{% url 'blog:update' post.pk %}">수정하기</a> </td>
                         <td><a href="{% url 'blog:delete' post.pk %}">삭제하기</a> </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        </div>
     </div>
 {% endblock extra_body %}
 

@@ -27,7 +27,7 @@ SECRET_KEY=os.environ.get("SECRET_KEY", "vsecretvv")
 DEBUG = True
 
 # forwarding 허락할 호스트를 적어준다.
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
